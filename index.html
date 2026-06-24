@@ -527,6 +527,28 @@
   display: none;
 }
 
+
+.gallery-nav{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:15px;
+}
+
+.gallery-nav button{
+  background:#6b3fa0;
+  color:white;
+  border:none;
+  padding:10px 18px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.gallery-nav button:hover{
+  background:#552c85;
+}
+  
 .contact-link-github{
   background:#24292e;
   color:#fff;
@@ -1041,12 +1063,19 @@ window.addEventListener('load', updateNav);
 
     <div id="modal-images"></div>
 
-    <a id="live-link" target="_blank" class="live-btn"></a>
+<div class="gallery-nav">
+  <button onclick="prevImage()">❮ Previous</button>
+  <button onclick="nextImage()">Next ❯</button>
+</div>
+
+<a id="live-link" target="_blank" class="live-btn"></a>
 
   </div>
 </div>
 
 <script>
+  let currentImages = [];
+let currentIndex = 0;
 function openProject(key) {
 
   const modal = document.getElementById("projectModal");
@@ -1133,11 +1162,10 @@ function openProject(key) {
 
   title.innerText = project.title;
 
-  project.images.forEach(img => {
-    const image = document.createElement("img");
-    image.src = img;
-    images.appendChild(image);
-  });
+  currentImages = project.images;
+currentIndex = 0;
+
+showImage();
 
   if (project.link && project.link.trim() !== "") {
     link.href = project.link;
@@ -1150,6 +1178,38 @@ function openProject(key) {
   }
 }
 
+
+function showImage() {
+
+  const images = document.getElementById("modal-images");
+
+  images.innerHTML = `
+    <img src="${currentImages[currentIndex]}" alt="Project Image">
+  `;
+}
+
+function nextImage() {
+
+  if(currentIndex < currentImages.length - 1){
+    currentIndex++;
+  } else {
+    currentIndex = 0;
+  }
+
+  showImage();
+}
+
+function prevImage() {
+
+  if(currentIndex > 0){
+    currentIndex--;
+  } else {
+    currentIndex = currentImages.length - 1;
+  }
+
+  showImage();
+}
+  
 function closeProject() {
   document.getElementById("projectModal").style.display = "none";
 }
