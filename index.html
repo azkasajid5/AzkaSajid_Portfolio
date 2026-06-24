@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="Azka Sajid - WordPress Developer portfolio showcasing Elementor, WooCommerce and web development projects.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azka Sajid — WordPress Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --ink: #1a1520;
+    --ink-soft: #3d3549;
+    --mist: #f5f2f8;
+    --surface: #ffffff;
+    --plum: #6b3fa0;
+    --plum-light: #9b6fd4;
+    --rose: #e8648a;
+    --gold: #f0b84b;
+    --border: #e8e3f0;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'Playfair Display', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--plum);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--plum); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 70px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--plum);
+    margin-bottom: 1.25rem;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--plum);
+  }
+  .hero-tagline {
+    font-size: 1.15rem; color: var(--ink-soft);
+    font-weight: 300; max-width: 440px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem; border-radius: 100px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--plum); color: white;
+    box-shadow: 0 4px 20px rgba(107,63,160,0.35);
+  }
+  .btn-primary:hover { background: var(--plum-light); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1.5px solid var(--border); color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--plum); color: var(--plum); }
+
+  .hero-right {
+    position: relative;
+    background: linear-gradient(135deg, var(--mist) 0%, #ede8f7 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 40%, rgba(155,111,212,0.18) 0%, transparent 65%);
+  }
+  .hero-card {
+    position: relative; z-index: 2;
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 340px;
+    box-shadow: 0 24px 64px rgba(107,63,160,0.15);
+  }
+  .hero-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--plum), var(--rose));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 2rem; color: white; font-weight: 700;
+    margin-bottom: 1.25rem;
+  }
+  .hero-card h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .hero-card p { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .card-stat-row { display: flex; gap: 1rem; }
+  .card-stat {
+    flex: 1; background: var(--mist);
+    border-radius: 12px; padding: 0.85rem;
+    text-align: center;
+  }
+  .card-stat strong { display: block; font-size: 1.5rem; color: var(--plum); font-family: var(--serif); }
+  .card-stat span { font-size: 0.7rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+  .floating-tag {
+    position: absolute;
+    background: white; border-radius: 100px;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem; font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .tag-1 { top: 22%; right: 8%; color: var(--plum); }
+  .tag-2 { bottom: 25%; left: 5%; color: var(--rose); }
+  .tag-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 5rem; }
+  .section-label {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--plum); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -0.02em; line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--ink-soft);
+    max-width: 540px; line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── WHY HIRE ME ── */
+  .why-section { background: var(--ink); color: white; }
+  .why-section .section-label { color: var(--gold); }
+  .why-section .section-title { color: white; }
+  .why-section .section-sub { color: rgba(255,255,255,0.6); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .why-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 2rem;
+    transition: all 0.3s;
+  }
+  .why-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+  .why-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; margin-bottom: 1.25rem;
+  }
+  .why-card h4 { font-family: var(--serif); font-size: 1.15rem; color: white; margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  /* ── SKILLS ── */
+  .skills-section { background: var(--mist); }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skill-category h4 {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--plum); margin-bottom: 1.25rem;
+  }
+  .skill-bar-wrap { margin-bottom: 1.1rem; }
+  .skill-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.875rem; font-weight: 500; margin-bottom: 0.4rem;
+  }
+  .skill-label span { color: var(--ink-soft); font-size: 0.75rem; }
+  .skill-track {
+    height: 6px; background: var(--border); border-radius: 100px; overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--plum), var(--plum-light));
+    animation: fillBar 1.4s cubic-bezier(.4,0,.2,1) both;
+  }
+  @keyframes fillBar { from { width: 0 !important; } }
+  .tool-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: 0.8rem; font-weight: 500; color: var(--ink-soft);
+    transition: all 0.2s;
+  }
+  .chip:hover { border-color: var(--plum); color: var(--plum); }
+  .chip i { font-size: 0.75rem; }
+
+  /* ── EXPERIENCE TIMELINE ── */
+  .timeline-wrap { position: relative; padding-left: 2rem; }
+  .timeline-wrap::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--plum), var(--rose));
+  }
+  .timeline-item { position: relative; margin-bottom: 3rem; padding-left: 2rem; }
+  .timeline-dot {
+    position: absolute; left: -2.5rem; top: 0.25rem;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--plum);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(107,63,160,0.25);
+  }
+  .timeline-meta {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.1em; color: var(--plum);
+    margin-bottom: 0.5rem;
+  }
+  .timeline-item h4 { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .timeline-item .org { font-size: 0.875rem; color: var(--ink-soft); font-weight: 500; margin-bottom: 0.75rem; }
+  .timeline-item p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; }
+
+  /* ── PROJECTS ── */
+  .projects-section { background: white; }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
+  .project-card {
+    border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 2rem;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(107,63,160,0.04), rgba(232,100,138,0.04));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .project-card:hover { border-color: var(--plum-light); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(107,63,160,0.12); }
+  .project-card:hover::after { opacity: 1; }
+  .project-tag {
+    display: inline-block;
+    background: var(--mist); color: var(--plum);
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; border-radius: 100px;
+    padding: 0.3rem 0.9rem; margin-bottom: 1rem;
+  }
+  .project-card h4 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.75rem; }
+  .project-card p { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.25rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-pill {
+    font-family: var(--mono); font-size: 0.7rem;
+    background: var(--ink); color: white;
+    border-radius: 100px; padding: 0.25rem 0.7rem;
+  }
+
+  /* ── CAREER GOALS ── */
+  .goals-section {
+    background: linear-gradient(135deg, #f5f0ff 0%, #fff0f5 100%);
+  }
+  .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  .goal-card {
+    background: white; border-radius: 20px; padding: 2rem;
+    box-shadow: 0 4px 24px rgba(107,63,160,0.08);
+  }
+  .goal-card .icon { font-size: 1.75rem; margin-bottom: 1rem; }
+  .goal-card h4 { font-family: var(--serif); font-size: 1.15rem; margin-bottom: 0.75rem; }
+  .goal-card p { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.7; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--ink); color: white;
+    text-align: center;
+  }
+  .contact-section .section-label { color: var(--rose); }
+  .contact-section .section-title { color: white; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto 3rem; }
+  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 100px;
+    text-decoration: none; font-size: 0.875rem; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .contact-link-email { background: var(--plum); color: white; }
+  .contact-link-email:hover { background: var(--plum-light); transform: translateY(-2px); }
+  .contact-link-phone { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+  .contact-link-phone:hover { background: rgba(255,255,255,0.18); }
+  .contact-link-wa { background: #25D366; color: white; }
+  .contact-link-wa:hover { opacity: 0.88; transform: translateY(-2px); }
+  .contact-link-li { background: #0A66C2; color: white; }
+  .contact-link-li:hover { opacity: 0.88; transform: translateY(-2px); }
+
+  .footer-note { font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: 3rem; }
+
+  /* ── TESTIMONIAL PLACEHOLDER ── */
+  .testimonial-box {
+    background: white; border-radius: 20px; padding: 2.5rem;
+    text-align: center; border: 1.5px dashed var(--border);
+    max-width: 560px; margin: 0 auto;
+  }
+  .testimonial-box i { font-size: 2.5rem; color: var(--border); margin-bottom: 1rem; }
+  .testimonial-box p { color: var(--ink-soft); font-style: italic; line-height: 1.7; }
+  .testimonial-box .t-note { font-size: 0.8rem; color: #bbb; margin-top: 0.75rem; }
+
+  /* ── EDUCATION ── */
+  .edu-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .edu-card {
+    background: var(--mist); border-radius: 16px; padding: 1.75rem;
+    border-left: 4px solid var(--plum);
+  }
+  .edu-year {
+    font-family: var(--mono); font-size: 0.72rem;
+    color: var(--plum); letter-spacing: 0.1em; margin-bottom: 0.5rem;
+  }
+  .edu-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .edu-card p { font-size: 0.825rem; color: var(--ink-soft); }
+
+  /* ── STRENGTHS ── */
+  .strengths-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .strength-item {
+    background: white; border-radius: 16px; padding: 1.5rem;
+    text-align: center;
+    border: 1.5px solid var(--border);
+    transition: all 0.25s;
+  }
+  .strength-item:hover { border-color: var(--plum); box-shadow: 0 8px 32px rgba(107,63,160,0.1); }
+  .strength-item i { font-size: 1.5rem; color: var(--plum); margin-bottom: 0.75rem; }
+  .strength-item p { font-size: 0.825rem; font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section { padding: 3.5rem 1.75rem; }
+    nav { padding: 1rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 5rem 1.75rem 2.5rem; }
+    .hero-right { min-height: 400px; }
+    .why-grid, .projects-grid, .goals-grid, .edu-cards, .strengths-list, .skills-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .card-stat-row { flex-direction: column; }
+  }
+
+/* LIGHTBOX BACKGROUND */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* LIGHTBOX IMAGE */
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+/* CLOSE BUTTON */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.view-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #6b3fa0;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-btn:hover {
+  background: #552c85;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#modal-images img {
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.live-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+* {
+  pointer-events: auto !important;
+}
+
+.project-card, .view-btn {
+  position: relative;
+  z-index: 9999;
+}
+
+.modal img,
+.project-modal img,
+.lightbox img {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.modal,
+.project-modal,
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: auto;
+  z-index: 9999;
+}
+.modal {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Azka Sajid</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-left">
+    <p class="hero-eyebrow">&#x2728; Open to Opportunities · Lahore, Pakistan</p>
+    <h1 class="hero-name">Azka <em>Sajid</em></h1>
+    <p class="hero-tagline">WordPress Developer specializing in Elementor, WooCommerce, responsive websites and modern web experiences.</p>
+    <div class="hero-cta">
+      <a href="mailto:azkasajid1029@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Get In Touch</a>
+      <a href="#projects" class="btn btn-ghost"><i class="fa-solid fa-folder-open"></i> View My Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-avatar">AS</div>
+      <h3>Azka Sajid</h3>
+      <p>BBIT Graduate · WordPress Developer</p>
+      <div class="card-stat-row">
+        <div class="card-stat"><strong>3+</strong><span>Projects</span></div>
+        <div class="card-stat"><strong>2025</strong><span>Intern</span></div>
+        <div class="card-stat"><strong>BBIT</strong><span>Degree</span></div>
+      </div>
+    </div>
+    <div class="floating-tag tag-1">
+      <div class="tag-dot" style="background:var(--plum)"></div>
+      Elementor Expert
+    </div>
+    <div class="floating-tag tag-2">
+      <div class="tag-dot" style="background:var(--rose)"></div>
+      WooCommerce Specialist
+    </div>
+  </div>
+</section>
+
+<!-- WHY HIRE ME -->
+<section class="why-section">
+  
+  <h2 class="section-title">Why Hire Me?</h2>
+  <p class="section-sub">I combine WordPress development skills with design awareness and problem solving ability to create websites that are functional, responsive and user focused.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(107,63,160,0.2)"><i class="fa-solid fa-laptop-code" style="color:var(--plum-light)"></i></div>
+      <h4>Full Stack WordPress Developer</h4>
+      <p>I can handle WordPress development from design to deployment, including theme customization, plugin integration, WooCommerce setup and performance optimization.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(232,100,138,0.2)"><i class="fa-solid fa-palette" style="color:var(--rose)"></i></div>
+      <h4>Design Aware Developer</h4>
+      <p>I apply UI/UX principles when building layouts and landing pages, ensuring designs are structured, consistent and user-friendly.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(240,184,75,0.2)"><i class="fa-solid fa-chart-line" style="color:var(--gold)"></i></div>
+      <h4>Business–Technical Understanding</h4>
+      <p>My BBIT background helps me understand both project requirements and technical implementation, allowing me to translate ideas into functional web solutions.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(107,63,160,0.2)"><i class="fa-solid fa-rocket" style="color:var(--plum-light)"></i></div>
+      <h4>Self Initiated Projects</h4>
+      <p>I actively build and launch personal projects, including my social media portfolio (GlowGridSocials) and an e-commerce website, gaining practical experience in WordPress and web development.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(232,100,138,0.2)"><i class="fa-solid fa-users" style="color:var(--rose)"></i></div>
+      <h4>Audience First Mindset</h4>
+      <p>I design and develop websites with the end user in mind, ensuring clear structure, smooth navigation and optimized user journeys for better engagement and conversions.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:rgba(240,184,75,0.2)"><i class="fa-solid fa-bolt" style="color:var(--gold)"></i></div>
+      <h4>Fast Learner , Adaptable Developer</h4>
+      <p>I continuously improve my skills with a growth mindset and adapt quickly to new tools, frameworks, and project requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY SKILLS -->
+<section style="background:var(--mist); padding:5rem;">
+  <p class="section-label">Core Expertise</p>
+  <h2 class="section-title">Key Skills</h2>
+
+  <div class="strengths-list">
+
+    <div class="strength-item">
+      <i class="fa-brands fa-wordpress"></i>
+      <p>WordPress Development</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-code"></i>
+      <p>HTML & CSS</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-mobile-screen"></i>
+      <p>Responsive Web Design</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <p>WooCommerce / E-Commerce</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <p>UI / Visual Design</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-layer-group"></i>
+      <p>Brand-Focused Design</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-hashtag"></i>
+      <p>Basic Social Media Strategy</p>
+    </div>
+
+    <div class="strength-item">
+      <i class="fa-solid fa-bullhorn"></i>
+      <p>Content Awareness</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS DASHBOARD -->
+<section class="skills-section" id="skills">
+  <p class="section-label">Skills Dashboard</p>
+  <h2 class="section-title">Tools &amp; Technologies</h2>
+  <div class="skills-grid">
+    <div class="skill-category">
+      <h4>Web Development</h4>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">WordPress <span>Advanced</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">Elementor <span>Advanced</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">WooCommerce <span>Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">HTML &amp; CSS <span>Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">JavaScript (Basic) <span>Beginner</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:40%"></div></div>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>Design &amp; Marketing</h4>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">Canva Design <span>Advanced</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">Social Media Management <span>Advanced</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">Content Planning <span>Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-label">Digital Marketing <span>Intermediate</span></div>
+        <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <h4>Tools &amp; Software</h4>
+      <div class="tool-chips">
+        <span class="chip"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+        <span class="chip"><i class="fa-solid fa-bolt"></i> Elementor</span>
+        <span class="chip"><i class="fa-brands fa-instagram"></i> Instagram</span>
+        <span class="chip"><i class="fa-solid fa-palette"></i> Canva</span>
+        <span class="chip"><i class="fa-brands fa-html5"></i> HTML5</span>
+        <span class="chip"><i class="fa-brands fa-css3"></i> CSS3</span>
+        <span class="chip"><i class="fa-brands fa-js"></i> JavaScript</span>
+        <span class="chip"><i class="fa-solid fa-file-excel"></i> MS Excel</span>
+        <span class="chip"><i class="fa-solid fa-file-powerpoint"></i> PowerPoint</span>
+        <span class="chip"><i class="fa-solid fa-file-word"></i> MS Word</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <h4>Soft Skills</h4>
+      <div class="tool-chips">
+        <span class="chip"><i class="fa-solid fa-lightbulb"></i> Creative Thinking</span>
+        <span class="chip"><i class="fa-solid fa-comments"></i> Communication</span>
+        <span class="chip"><i class="fa-solid fa-clock"></i> Time Management</span>
+        <span class="chip"><i class="fa-solid fa-circle-check"></i> Attention to Detail</span>
+        <span class="chip"><i class="fa-solid fa-arrows-spin"></i> Adaptability</span>
+        <span class="chip"><i class="fa-solid fa-puzzle-piece"></i> Problem Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:white;">
+  <p class="section-label">Career Journey</p>
+  <h2 class="section-title">Experience &amp; Education</h2>
+  <p class="section-sub">Built through formal education in BBIT, practical WordPress development work and self-driven projects focused on real-world applications.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;">
+    <div>
+      <h4 style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);margin-bottom:2rem;">Work Experience</h4>
+      <div class="timeline-wrap">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-meta">July 2025 – September 2025</div>
+          <h4>WordPress Developer Intern</h4>
+          <p class="org">Web Marketing Solutions</p>
+          <p>Gained hands-on industry experience building and managing WordPress websites. Worked alongside professionals to deliver client-ready web solutions with a focus on UX, performance and maintainability.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--rose)"></div>
+          <div class="timeline-meta">Ongoing</div>
+          <h4>Digital Content Creator</h4>
+          <p class="org">glowgridsocials · Instagram</p>
+          <p>Self-managed personal branding page dedicated to digital marketing content. Responsible for strategy, content design in Canva, scheduling, audience engagement, and analytics.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--plum);margin-bottom:2rem;">Education</h4>
+      <div class="edu-cards" style="grid-template-columns:1fr;">
+        <div class="edu-card">
+          <div class="edu-year">2022 – 2026</div>
+          <h4>Bachelor of Business &amp; Information Technology (BBIT)</h4>
+          <p>University of the Punjab, New Campus, Lahore</p>
+        </div>
+        <div class="edu-card" style="border-left-color:var(--rose);">
+          <div class="edu-year" style="color:var(--rose)">2020 – 2022</div>
+          <h4>Intermediate (ICS)</h4>
+          <p> Computer Science </p>
+        </div>
+        <div class="edu-card" style="border-left-color:var(--gold);">
+          <div class="edu-year" style="color:var(--gold)">2018 – 2020</div>
+          <h4>Matriculation (Science)</h4>
+          <p>Science Group</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+
+  <p class="section-label">Work Showcase</p>
+  <h2 class="section-title">Projects &amp; Achievements</h2>
+
+  <p class="section-sub">
+    A selection of real WordPress and web development projects built using Elementor, WooCommerce, and front-end tools, showcasing practical skills and hands-on experience.
+  </p>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card glowup">
+      <span class="project-tag">WordPress E-Commerce</span>
+      <button class="view-btn" onclick="openProject('glowup')">
+  View My Work
+</button>
+      <h4>GlowUp Zone – WooCommerce Store</h4>
+      <p>
+        Developed a complete WordPress e-commerce website using WooCommerce and Elementor, featuring product pages, cart, wishlist, and responsive shopping experience with custom design layout.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">WordPress</span>
+        <span class="tech-pill">WooCommerce</span>
+        <span class="tech-pill">Elementor</span>
+        <span class="tech-pill">CSS</span>
+        
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card tibbiherbs">
+      <span class="project-tag">Live Website</span> 
+      <button class="view-btn" onclick="openProject('tibbiherbs')">
+  View My Work
+</button>
+      <h4>TibbiHerbs – WordPress Business Website</h4>
+      
+      <p>
+        Built and deployed a live WordPress website for a real business (tibbiherbs.com), focusing on clean UI, responsive layout, and structured content presentation.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">WordPress</span>
+        <span class="tech-pill">Elementor</span>
+        <span class="tech-pill">SEO Basics</span>
+        
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card ghtech">
+      <span class="project-tag">Website UI Design</span>
+      <button class="view-btn" onclick="openProject('ghtech')">
+  View My Work
+</button>
+      <h4>GH Tech – Multi-Page Website (Design)</h4>
+      <p>
+        Designed a 3-page WordPress-based website layout including homepage and internal pages, focusing on structure, UI consistency, and responsive design principles.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">WordPress</span>
+        <span class="tech-pill">UI Design</span>
+        <span class="tech-pill">Elementor</span>
+        
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card skardufood">
+      <span class="project-tag">Travel & Food Website</span>
+      <button class="view-btn" onclick="openProject('skardufood')">
+  View My Work
+</button>
+      <h4>Skardu Food Street – Review Website UI</h4>
+      <p>
+        Developed a WordPress-based travel and food website with review section UI design. Focused on layout structure and user experience for browsing food listings.
+      </p>
+      <div class="project-tech">
+        <span class="tech-pill">WordPress</span>
+        <span class="tech-pill">UI Layout</span>
+        <span class="tech-pill">Content Design</span>
+        
+      </div>
+    </div>
+
+<!-- GRAPHIC DESIGN SECTION CARD -->
+<div class="project-card graphic-design">
+  
+  <span class="project-tag">Branding & Design Portfolio</span>
+
+<button class="view-btn" onclick="openProject('graphicdesign')">
+  View My Designs
+</button>
+
+
+  <h4>Brand Identity & Visual Design Work</h4>
+
+  <p>
+    Designed professional logos, brand identities, business cards, social media posts, banners and marketing creatives using Canva.  
+    Focused on creating visually consistent and impactful designs that enhance brand recognition and online presence.
+  </p>
+
+  <div class="project-tech">
+    <span class="tech-pill">Logo Design</span>
+    <span class="tech-pill">Brand Identity</span>
+    <span class="tech-pill">Canva</span>
+    <span class="tech-pill">Social Media Posts</span>
+  </div>
+
+</div>
+    
+  </div>
+</section>
+
+<!-- CAREER GOALS -->
+<section class="goals-section">
+  <p class="section-label">Looking Ahead</p>
+  <h2 class="section-title">Career Goals</h2>
+  <p class="section-sub">Where I'm headed and what drives me to keep growing every day.</p>
+  <div class="goals-grid">
+    <div class="goal-card">
+      <div class="icon">🎯</div>
+      <h4>Immediate Goal</h4>
+      <p>To secure a full-time or part-time role in web development where I can contribute my WordPress and front-end skills while continuing to grow in a professional environment.</p>
+    </div>
+    <div class="goal-card">
+      <div class="icon">🚀</div>
+      <h4>Short-Term Vision</h4>
+      <p>To deepen my skills in custom WordPress development and frontend technologies, while gradually exploring React and improving my overall web development capabilities.</p>
+    </div>
+    <div class="goal-card">
+      <div class="icon">🌐</div>
+      <h4>Long-Term Ambition</h4>
+      <p>To become a senior web developer with strong expertise in WordPress, frontend technologies and UI/UX, contributing to projects that combine design, functionality and user experience.</p>
+    </div>
+    <div class="goal-card">
+      <div class="icon">💡</div>
+      <h4>What Drives Me</h4>
+      <p>I enjoy creating practical and user-focused web experiences using WordPress and frontend development, combining functionality with clean and thoughtful design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background:white;">
+  <p class="section-label">What Others Say</p>
+  <h2 class="section-title">Testimonials</h2>
+
+  <div class="testimonial-box">
+    <i class="fa-solid fa-quote-left"></i>
+    <p>
+      I am currently building professional experience through internships and real-world projects. Feedback from mentors and collaborators will be showcased here as I continue working on client-based development.
+    </p>
+
+    <p class="t-note">References available upon request.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label">Let's Work Together</p>
+  <h2 class="section-title" style="margin-bottom:1rem;">Get In Touch</h2>
+  <p class="section-sub"> I’m open to internships, junior web development roles, freelance projects and collaborations in WordPress and front-end development.
+    If you’re looking for someone who can build clean, responsive, and user-focused websites. Let’s connect.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:azkasajid1029@gmail.com" class="contact-link contact-link-email">
+      <i class="fa-solid fa-envelope"></i> azkasajid1029@gmail.com
+    </a>
+    <a href="tel:+923164819036" class="contact-link contact-link-phone">
+      <i class="fa-solid fa-phone"></i> +92 316 4819036
+    </a>
+    <a href="https://wa.me/923164819036" target="_blank" class="contact-link contact-link-wa">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+    <a href="https://www.instagram.com/glowgridsocials" target="_blank" class="contact-link" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;">
+      <i class="fa-brands fa-instagram"></i> glowgridsocials
+    </a>
+    <a href="https://www.linkedin.com/in/azka-sajid" target="_blank" class="contact-link contact-link-li">
+      <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
+  <p class="footer-note">© 2026 Azka Sajid · Lahore, Pakistan · Designed with intention.</p>
+</section>
+
+<script>
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.style.width;
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.skill-fill').forEach(el => {
+  observer.observe(el);
+});
+
+  function updateNav() {
+  let current = '';
+
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) {
+      current = s.id;
+    }
+  });
+
+  navLinks.forEach(a => {
+    if (a.getAttribute('href') === '#' + current) {
+      a.style.color = 'var(--plum)';
+    } else {
+      a.style.color = '';
+    }
+  });
+}
+
+window.addEventListener('scroll', updateNav);
+window.addEventListener('load', updateNav);
+
+</script>
+
+
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeProject()">&times;</span>
+
+    <h2 id="modal-title"></h2>
+
+    <div id="modal-images"></div>
+
+    <a id="live-link" target="_blank" class="live-btn"></a>
+
+  </div>
+</div>
+
+<script>
+function openProject(key) {
+
+  const modal = document.getElementById("projectModal");
+  const title = document.getElementById("modal-title");
+  const images = document.getElementById("modal-images");
+  const link = document.getElementById("live-link");
+
+  modal.style.display = "block";
+  images.innerHTML = "";
+
+  const data = {
+    glowup: {
+      title: "GlowUp Zone – WooCommerce Store",
+      images: [
+        "images/glowup1.jpeg",
+        "images/glowup2.jpeg",
+        "images/glowup3.jpeg",
+        "images/glowup4.jpeg",
+        "images/glowup5.jpeg",
+        "images/glowup6.jpeg",
+        "images/glowup7.jpeg"
+      ],
+      link: ""
+    },
+
+    tibbiherbs: {
+      title: "TibbiHerbs – Live Website",
+      images: [
+        "images/tibbi1.jpeg",
+        "images/tibbi2.jpeg",
+        "images/tibbi3.jpeg",
+        "images/tibbi4.jpeg"
+      ],
+      link: "https://tibbiherbs.com"
+    },
+
+    ghtech: {
+      title: "GH Tech",
+      images: [
+        "images/gh1.jpeg",
+        "images/gh2.jpeg",
+        "images/gh3.jpeg"
+      ],
+      link: ""
+    },
+
+    skardufood: {
+      title: "Skardu Food Street",
+      images: [
+        "images/sfs1.jpeg",
+        "images/sfs2.jpeg",
+        "images/sfs3.jpeg",
+        "images/sfs4.jpeg"
+      ],
+      link: ""
+    },
+
+    graphicdesign: {
+      title: "Brand Identity & Visual Design Work",
+      images: [
+        "images/logo1.png",
+        "images/logo2.png",
+        "images/logo3.png",
+        "images/logo4.png",
+        "images/logo5.png",
+        "images/logo6.png",
+        "images/logo8.png",
+        "images/post1.png",
+        "images/post2.png",
+        "images/post3.png",
+        "images/post4.png",
+        "images/post5.png",
+        "images/post6.png",
+        "images/poster1.jpeg",
+        "images/poster2.jpeg"
+      ],
+      link: ""
+    }
+  };
+
+  const project = data[key];
+
+  if (!project) return; // safety check
+
+  title.innerText = project.title;
+
+  project.images.forEach(img => {
+    const image = document.createElement("img");
+    image.src = img;
+    images.appendChild(image);
+  });
+
+  if (project.link && project.link.trim() !== "") {
+    link.href = project.link;
+    link.innerText = "Visit Live Website";
+    link.style.display = "inline-block";
+  } else {
+    link.href = "#";
+    link.innerText = "";
+    link.style.display = "none";
+  }
+}
+
+function closeProject() {
+  document.getElementById("projectModal").style.display = "none";
+}
+
+window.addEventListener("click", function (e) {
+  const modal = document.getElementById("projectModal");
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+</script>
+
+</body>
+
+</html>
